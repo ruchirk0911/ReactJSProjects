@@ -2,9 +2,11 @@ import React from 'react';
 
 class SearchBar extends React.Component{
     state = { term: '' };
-    onFormSubmit(event){
+    // To avoid 'this' as undefined. Arrow function binds this with correct SearchBar instance. 
+    onFormSubmit = (event) => {
         event.preventDefault();
-    }
+        this.props.onSubmit(this.state.term);
+    };
     render(){
         return (
         <div className="ui segment">
